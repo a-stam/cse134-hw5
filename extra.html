@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Software Engineer's Personal Portfolio</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="/source/images/favicon.ico"
+        />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <main>
+            <h1>Extra Tags Page</h1>
+            <section>
+                <button onclick="window.location.href = '/index.html';">
+                    Main Page
+                </button>
+                <br />
+                <iframe
+                    src="https://www.wikipedia.org/"
+                    title="Example of iframe on wikipedia page"
+                ></iframe>
+                <br />
+                <figure>
+                <canvas id="AS-logo" width="60" height="60">
+                    <script>
+                        var canvas = document.getElementById("AS-logo");
+                        var ctx = canvas.getContext("2d");
+                        ctx.font = "40px Arial";
+                        ctx.fillText("AS", 0, 30);
+                    </script>
+                </canvas>
+                <figcaption>Fig.1 - Logo made with <strong>canvas</strong> tag.</figcaption>
+                </figure>
+                <br />
+                <details>
+                    <summary>Example of svg tag</summary>
+                    <p>
+                        This is the example to drawing a blue
+                        <i>circle</i> using a <b>svg</b> tag.
+                    </p>
+                </details>
+                <br />
+                <svg width="120" height="120">
+                    <circle cx="60" cy="60" r="50" fill="blue" />
+                </svg>
+                <br />
+                <audio controls>
+                    <source src="/source/audios/audio.mp3" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </audio>
+                <br />
+                <video width="320" height="240" controls>
+                    <source src="/source/videos/Team.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <br />
+                <ol>
+                    <li>First</li>
+                    <li>Second</li>
+                    <li>Third</li>
+                    <li>Fourth</li>
+                </ol>
+            </section>
+        </main>
+        <footer>
+            <br />
+            <hr />
+            <span>© Aleksa Stamenkovic 2023</span>
+            <span>
+                <a
+                    href="https://www.linkedin.com/in/aleksa-stamenkovic/"
+                    target="_blank"
+                >
+                    <img
+                        src="/source/images/linkedin.png"
+                        alt="LinkedIn logo"
+                        width="20"
+                    />
+                </a>
+                <a href="https://github.com/a-stam" target="_blank">
+                    <img
+                        src="/source/images/github.png"
+                        alt="GitHub logo"
+                        width="20"
+                    />
+                </a>
+            </span>
+        </footer>
+    </body>
+</html>
