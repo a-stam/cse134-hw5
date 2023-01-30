@@ -9,8 +9,8 @@
         />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="" />
-        <script src=""></script>
+        <link rel="stylesheet" href="/source/style/style.css" />
+        <script src="/source/scripts/script.js"></script>
         <style>
             /* Custom CSS styles */
         </style>
@@ -18,7 +18,7 @@
     <body>
         <header>
             <a href="#contact">
-                <!-- add logo using a picture tag  -->
+                <!-- add logo ucing a picture tag  -->
                 <picture>
                     <source
                         srcset="/source/images/favicon.ico"
@@ -49,9 +49,6 @@
                     <em><b>clean, efficient, and maintainable code</b></em>. 
                         I am always eager to learn new technologies and improve my skills.</code></pre>
             </section>
-            <tamplate>
-                <p>This is not shwoing on the main page</p>
-            </tamplate>
             <section id="skills">
                 <h2>Skills</h2>
                 <table>
@@ -59,9 +56,9 @@
                         Technical skills
                     </caption>
                     <colgroup>
-                        <col width="200" />
-                        <col width="100" />
-                        <col width="200" />
+                        <col style="width: 200px" />
+                        <col style="width: 100px" />
+                        <col style="width: 200px" />
                     </colgroup>
                     <thead>
                         <tr>
@@ -84,12 +81,17 @@
                         <tr>
                             <td>Java</td>
                             <td>CSS</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>C/C++</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Cuda</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -187,14 +189,13 @@
                                     required
                                 ></textarea>
                                 <br />
-                                <!-- select between recruiter or other using select tag -->
                                 <label for="contact-outreach">Contact:</label>
                                 <input
-                                    list="contact-fields"
-                                    name="contact-field"
-                                    id="contact-field"
+                                    list="contact-outreach-list"
+                                    name="contact-outreach"
+                                    id="contact-outreach"
                                 />
-                                <datalist id="contact-outreach" name="contact">
+                                <datalist id="contact-outreach-list">
                                     <option value="recruiter">Recruiter</option>
                                     <option value="other">Other</option>
                                 </datalist>
@@ -250,6 +251,9 @@
                 </div>
             </section>
         </main>
+        <tamplate>
+            <p>This is not shwoing on the main page</p>
+        </tamplate>
         <footer>
             <br />
             <hr />
