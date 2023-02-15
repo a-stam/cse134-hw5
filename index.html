@@ -1,282 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Software Engineer's Personal Portfolio</title>
-        <link
-            rel="icon"
-            type="image/x-icon"
-            href="/source/images/favicon.ico"
-        />
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/source/style/style.css" />
-        <script src="/source/scripts/script.js"></script>
-        <style>
-            /* Custom CSS styles */
-        </style>
-    </head>
-    <body>
-        <template>
-            <p>This is not shwoing on the main page</p>
-        </template>
-        <header>
-            <a href="#contact">
-                <!-- add logo ucing a picture tag  -->
-                <picture>
-                    <source
-                        srcset="/source/images/favicon.ico"
-                        type="image/png"
-                    />
-                    <img src="/source/images/AS.png" alt="Logo" width="50" />
-                </picture>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="/extra.html">Extra Elements Page</a></li>
+
+<head>
+    <title>Software Engineer's Personal Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="/source/images/favicon.ico" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/source/style/style.css" />
+    <script src="/source/scripts/script.js"></script>
+    <style>
+        /* Custom CSS styles */
+    </style>
+</head>
+
+<body>
+    <template>
+        <p>This is not shwoing on the main page</p>
+    </template>
+    <header>
+        <a href="#">
+            <picture>
+                <source srcset="/source/images/favicon.ico" type="image/png" />
+                <img id="logo" src="/source/images/AS.png" alt="Logo" height="50" />
+            </picture>
+        </a>
+        <nav id="nav-bar">
+            <ul id="nav-bar-list">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- <li><a href="/extra.html">Extra Elements Page</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="about">
+            <h3>Aleksa Stamenkovic</h3>
+            <div id="code-container">
+            <pre class="code">
+... and I am a 
+    <pre class="hidden-code">    software engineer</pre>
+            with experience in building
+            <pre class="hidden-code">            web and mobile applications.</pre>
+            I am passionate about writing
+            <pre class="hidden-code">                    clean, efficient, and maintainable code.</pre>
+            </pre>
+        </div>
+        </section>
+        <section id="skills">
+            <h3>Skills</h3>
+            <table>
+                <colgroup>
+                    <col style="width: 200px" />
+                    <col style="width: 100px" />
+                    <col style="width: 200px" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Languages</th>
+                        <th>Web</th>
+                        <th>Database</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>React</td>
+                        <td>Reltational db design</td>
+                    </tr>
+                    <tr>
+                        <td>Python</td>
+                        <td>HTML</td>
+                        <td>SQL</td>
+                    </tr>
+                    <tr>
+                        <td>Java</td>
+                        <td>CSS</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>C/C++</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Cuda</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="experience">
+            <h3>Experience</h3>
+            <div class="experience-div">
+                <h4>Frontend Engineer at Makeithappen</h4>
+                <p class="experience-details">
+                    Developed and maintained front end applications using
+                    Javascript and ReactJS.
+                </p>
+                <ul class="experience-list">
+                    <li>ReactJS</li>
+                    <li>JavaScript</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>AWS</li>
                 </ul>
-            </nav>
-        </header>
-        <main>
-            <section id="about">
-                <h1>About Me</h1>
-                <pre><code>I am a 
-    <em><b>software engineer</b></em> 
-        with experience in building 
-            <em><b>web and mobile applications</b></em>
-                . I am passionate about writing 
-                    <em><b>clean, efficient, and maintainable code</b></em>. 
-                        I am always eager to learn new technologies and improve my skills.</code></pre>
-            </section>
-            <section id="skills">
-                <h2>Skills</h2>
-                <table>
-                    <caption>
-                        Technical skills
-                    </caption>
-                    <colgroup>
-                        <col style="width: 200px" />
-                        <col style="width: 100px" />
-                        <col style="width: 200px" />
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>Languages</th>
-                            <th>Web</th>
-                            <th>Database</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>JavaScript</td>
-                            <td>React</td>
-                            <td>Reltational db design</td>
-                        </tr>
-                        <tr>
-                            <td>Python</td>
-                            <td>HTML</td>
-                            <td>SQL</td>
-                        </tr>
-                        <tr>
-                            <td>Java</td>
-                            <td>CSS</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>C/C++</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Cuda</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-            <section id="experience">
-                <h2>Experience</h2>
-                <div>
-                    <h3>Frontend Engineer at Makeithappen</h3>
-                    <p>
-                        Developed and maintained front end applications using
-                        Javascript and ReactJS.
-                    </p>
-                    <ul>
-                        <li>ReactJS</li>
-                        <li>JavaScript/li></li>
-                        <li>AWS</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Backend and Database Engineer at Saga</h3>
-                    <p>
-                        Developed a CRM App in Java using MySQL Database and
-                        Hibernate.
-                    </p>
-                    <ul>
-                        <li>SQL</li>
-                        <li>Hibernate</li>
-                        <li>Spring</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>TA for Programming in Python (De Anza College)</h3>
-                    <p>Reinforced lessons and assist professor in teaching.</p>
-                    <ul>
-                        <li>OOP</li>
-                        <li>Polymorphism</li>
-                        <li>Data Structures</li>
-                    </ul>
-                </div>
-            </section>
-            <section id="education">
-                <h2>Education</h2>
-                <div>
-                    <h3>University of California, San Diego</h3>
-                    <p>B. Sc. Computer Science 2021 - 2023</p>
-                </div>
-                <div>
-                    <h3>De Anza College</h3>
-                    <p>B. Sc. Computer Science - Transfer 2019 - 2021</p>
-                </div>
-            </section>
-            <section id="contact">
-                <h2>Contact</h2>
-                <div>
-                    <span>
-                        <a
-                            href="https://www.linkedin.com/in/aleksa-stamenkovic/"
-                            target="_blank"
-                        >
-                            LinkedIn
-                        </a>
-                    </span>
-                    <span>
-                        <a href="mailto:fakeAddress@abc.com">Email</a>
-                    </span>
-                    <span>
-                        <a href="https://www.instagram.com/" target="_blank">
-                            Instagram
-                        </a>
-                    </span>
-                    <aside>
-                        <form>
-                            <fieldset>
-                                <legend>Contact form</legend>
-                                <label for="name">Name:</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    required
-                                />
-                                <br />
-                                <label for="contact-email">Email:</label>
-                                <input
-                                    type="email"
-                                    id="contact-email"
-                                    name="email"
-                                    required
-                                />
-                                <br />
-                                <label for="contact-message">Message:</label>
-                                <textarea
-                                    id="contact-message"
-                                    name="message"
-                                    required
-                                ></textarea>
-                                <br />
-                                <label for="contact-outreach">Contact:</label>
-                                <input
-                                    list="contact-outreach-list"
-                                    name="contact-outreach"
-                                    id="contact-outreach"
-                                />
-                                <datalist id="contact-outreach-list">
-                                    <option value="recruiter">Recruiter</option>
-                                    <option value="other">Other</option>
-                                </datalist>
-                                <br />
-                                <label for="contact-fields">Field:</label>
-                                <select id="contact-fields">
-                                    <optgroup label="Tech">
-                                        <option value="Software">
-                                            Software
-                                        </option>
-                                        <option value="Hardware">
-                                            Hardware
-                                        </option>
-                                        <option value="AI">AI</option>
-                                    </optgroup>
-                                    <optgroup label="Finance">
-                                        <option value="Banking">Banking</option>
-                                        <option value="Insurance">
-                                            Insurance
-                                        </option>
-                                        <option value="Investment">
-                                            Investment
-                                        </option>
-                                    </optgroup>
-                                    <optgroup label="Healthcare">
-                                        <option value="Pharmaceutical">
-                                            Pharmaceutical
-                                        </option>
-                                        <option value="Medical Devices">
-                                            Medical Devices
-                                        </option>
-                                        <option value="Biotech">Biotech</option>
-                                    </optgroup>
-                                    <optgroup label="Education">
-                                        <option value="K-12">K-12</option>
-                                        <option value="Higher Education">
-                                            Higher Education
-                                        </option>
-                                    </optgroup>
-                                    <optgroup label="Government">
-                                        <option value="Federal">Federal</option>
-                                        <option value="State">State</option>
-                                        <option value="Local">Local</option>
-                                    </optgroup>
-                                    <optgroup label="Other">
-                                        <option value="Other">Other</option>
-                                    </optgroup>
-                                </select>
-                                <input type="submit" value="Send" />
-                            </fieldset>
-                        </form>
-                    </aside>
-                </div>
-            </section>
-        </main>
-        <footer>
-            <br />
-            <hr />
-            <span>© Aleksa Stamenkovic 2023</span>
-            <span>
-                <a
-                    href="https://www.linkedin.com/in/aleksa-stamenkovic/"
-                    target="_blank"
-                >
-                    <img
-                        src="/source/images/linkedin.png"
-                        alt="LinkedIn logo"
-                        width="20"
-                    />
-                </a>
-                <a href="https://github.com/a-stam" target="_blank">
-                    <img
-                        src="/source/images/github.png"
-                        alt="GitHub logo"
-                        width="20"
-                    />
-                </a>
-            </span>
-        </footer>
-    </body>
+            </div>
+            <div class="experience-div">
+                <h4>Backend and Database Engineer at Saga</h4>
+                <p class="experience-details">
+                    Developed a CRM App in Java using MySQL Database and
+                    Hibernate.
+                </p>
+                <ul class="experience-list">
+                    <li>SQL</li>
+                    <li>Hibernate</li>
+                    <li>Spring</li>
+                </ul>
+            </div>
+            <div class="experience-div">
+                <h4>TA for Programming in Python (De Anza College)</h4>
+                <p class="experience-details">Reinforced lessons and assist professor in teaching.</p>
+                <ul class="experience-list">
+                    <li>Python</li>
+                    <li>OOP</li>
+                    <li>Polymorphism</li>
+                    <li>Data Structures</li>
+                </ul>
+            </div>
+        </section>
+        <section id="education">
+            <h3>Education</h3>
+            <div class="education-div">
+                <h4>University of California, San Diego (2021 - 2023)</h4>
+                <p class="education-school">B. Sc. Computer Science</p>
+            </div>
+            <div class="education-div">
+                <h4>De Anza College (2019 - 2021)</h4>
+                <p class="education-school">B. Sc. Computer Science - Transfer</p>
+            </div>
+        </section>
+        <section id="contact">
+            <h3>Contact</h3>
+            <!-- contact form -->
+            <form id="contact-form">
+                <fieldset>
+                    <legend>Shoot me an email!</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required />
+                    <br />
+                    <label for="contact-email">Email:</label>
+                    <input type="email" id="contact-email" name="email" required />
+                    <br />
+                    <label for="contact-message">Message:</label>
+                    <textarea id="contact-message" name="message" required></textarea>
+                    <br />
+                    <label for="contact-outreach">Contact:</label>
+                    <input list="contact-outreach-list" name="contact-outreach" id="contact-outreach" />
+                    <datalist id="contact-outreach-list">
+                        <option value="recruiter">Recruiter</option>
+                        <option value="other">Other</option>
+                    </datalist>
+                    <br />
+                    <button type="submit">Submit</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <span id="copyright">© Aleksa Stamenkovic 2023</span>
+        <span id="footer-links">
+            <a href="https://www.linkedin.com/in/aleksa-stamenkovic/" target="_blank">
+                <img src="/source/images/linkedin.png" alt="LinkedIn logo" width="20" />
+            </a>
+            <a href="https://github.com/a-stam" target="_blank">
+                <img src="/source/images/github.png" alt="GitHub logo" width="20" />
+            </a>
+        </span>
+    </footer>
+</body>
+
 </html>
