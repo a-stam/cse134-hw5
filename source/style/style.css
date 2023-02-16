@@ -200,7 +200,7 @@ h4 {
 
 .header-line {
     background: linear-gradient(to right, var(--button-color), transparent);
-    border: 1;
+    border: 0;
     height: 1px;
 }
 
@@ -229,10 +229,6 @@ h4 {
     padding: 0;
     margin: 0;
     font-family: monospace;
-}
-
-.footer-links>a>img {
-    margin: 10 rem;
 }
 
 .pre {
@@ -355,7 +351,7 @@ section {
 }
 
 table {
-    align-items: centers;
+    align-items: center;
     border-collapse: collapse;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
@@ -461,13 +457,13 @@ tbody td:not(:last-child) {
 .education-div:hover:nth-child(even) {
     background-color: #d9d9d9;
     transform: scale(1.05);
-    rotate: 0deg;
+    transform: rotate(0deg);
 }
 
 .education-div:hover:nth-child(odd) {
     background-color: #d9d9d9;
     transform: scale(1.05);
-    rotate: 0deg;
+    transform: rotate(0deg);
 }
 
 .education-school {
