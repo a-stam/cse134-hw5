@@ -30,6 +30,18 @@
     font-weight: 200;
 }
 
+@keyframes shine {
+    0% {
+        background-color: #757575;
+    }
+    50% {
+        background-color: rgba(0, 0, 0);
+    }
+    100% {
+        background-color: #757575;
+    }
+}
+
 :root {
     --button-color: #5d00ff;
     --button-color-hover: #4b00cc;
@@ -38,7 +50,7 @@
 }
 
 * {
-    font-family: 'SF UI Text', sans-serif;
+    font-family: 'SF UI Text';
 }
 
 html {
@@ -73,13 +85,10 @@ html {
         flex-direction: column;
         justify-content: center;
         transition-property: all;
-        transition-duration: 0.5s;
+        transition-duration: 0.3s;
         margin: 0.2rem 0;
     }
 
-    #about {
-        display: none;
-    }
 }
 
 @media screen and (min-width: 600px) {
@@ -111,10 +120,6 @@ html {
         flex-direction: column;
         justify-content: center;
     }
-
-    #about {
-        display: block;
-    }
 }
 
 
@@ -142,24 +147,17 @@ html {
     }
 
     #nav-bar-list>li {
-        /* height: 100%; */
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
     }
-
-    #about {
-        display: block;
-    }
 }
-
 section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    padding: 2rem;
     background-color: #e9e2ff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     margin: 0 0 1rem 0;
@@ -192,7 +190,6 @@ h3 {
     font-size: 2rem;
     margin-top: 0;
     margin-bottom: 1rem;
-    /* make it pretty but elegant using borders */
 }
 
 h4 {
@@ -202,14 +199,12 @@ h4 {
 }
 
 .header-line {
-    /* let is gradually disappear as it goes to the right and let it be the color of the button variable */
     background: linear-gradient(to right, var(--button-color), transparent);
     border: 1;
     height: 1px;
 }
 
-/* style code section so that it looks like terminal */
-.code {
+ .code {
     padding: 2rem;
     background-color: black;
     color: white;
@@ -217,14 +212,16 @@ h4 {
     font-family: monospace;
     transition-property: background-color;
     transition-duration: 0.5s;
+    animation-name: shine;
+    animation-duration: 0.3s;
+    animation-iteration-count: 3;
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    overflow: hidden;
 }
 
 .code:hover {
     background-color: #757575;
-}
-
-#code-container {
-    max-width: 1200px;
 }
 
 .hidden-code {
@@ -240,12 +237,7 @@ h4 {
 
 .pre {
     font-family: 'Courier New', Courier, monospace;
-    max-width: 1200px;
-}
-
-#logo {
-    transition-property: filter;
-    transition-duration: 0.5s;
+    /* max-width: 1200px; */
 }
 
 #nav-bar {
@@ -263,10 +255,30 @@ h4 {
     transform: translateY(-2px);
 }
 
+#nav-bar-list>li:active {
+    /* background-color: var(--button-color-hover); */
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0);
+    transform: translateY(0px);
+}
+
 #nav-bar-list>li>a {
     text-decoration: none;
     color: #eaeaea;
     font-weight: bold;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #e9e2ff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 0 0 1rem 0;
+    background-color: #fff;
 }
 
 #contact-form {
@@ -337,10 +349,15 @@ h4 {
     border-color: var(--button-color-hover);
 }
 
+#skills-table {
+    width: calc(100% - 40px);
+    max-width: 1200px;
+}
+
 table {
+    align-items: centers;
     border-collapse: collapse;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    max-width: 1200px;
 }
 
 th,
@@ -390,6 +407,7 @@ tbody td:not(:last-child) {
     background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: calc(100% - 40px);
     max-width: 1200px;
 }
 
@@ -415,12 +433,13 @@ tbody td:not(:last-child) {
     border-radius: 5px;
     cursor: pointer;
     transition-duration: 0.3s;
-    transition-property: transform, box-shadow;
+    transition-property: transform, box-shadow, background-color;
 }
 
 .experience-list li:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: #5d00ff49;
 }
 
 .experience-list li:active {
@@ -435,6 +454,7 @@ tbody td:not(:last-child) {
     margin: 20px;
     padding: 20px;
     transition: all 0.3s ease-in-out;
+    width: calc(100% - 40px);
     max-width: 1200px;
 }
 
@@ -461,4 +481,15 @@ tbody td:not(:last-child) {
 
 .education-div:nth-child(odd) {
     transform: rotate(-3deg);
+}
+
+
+#education:has(> #ucsd-div:hover) {
+    background-image: url("/source/images/ucsd.jpg");
+    background-position: center;
+}
+
+#education:has(> #deanza-div:hover) {
+    background-image: url("/source/images/deanza.jpg");
+    background-position: center;
 }

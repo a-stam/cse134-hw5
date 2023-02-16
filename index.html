@@ -8,9 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/source/style/style.css" />
     <script src="/source/scripts/script.js"></script>
-    <style>
-        /* Custom CSS styles */
-    </style>
 </head>
 
 <body>
@@ -20,8 +17,8 @@
     <header>
         <a href="#">
             <picture>
-                <source srcset="/source/images/favicon.ico" type="image/png" />
-                <img id="logo" src="/source/images/AS.png" alt="Logo" height="50" />
+                <source srcset="/source/images/favicon.ico" type="image" />
+                <img id="logo" src="/source/images/favicon.ico" alt="Logo" height="50" />
             </picture>
         </a>
         <nav id="nav-bar">
@@ -38,20 +35,18 @@
     <main>
         <section id="about">
             <h3>Aleksa Stamenkovic</h3>
-            <div id="code-container">
             <pre class="code">
 ... and I am a 
     <pre class="hidden-code">    software engineer</pre>
             with experience in building
-            <pre class="hidden-code">            web and mobile applications.</pre>
-            I am passionate about writing
-            <pre class="hidden-code">                    clean, efficient, and maintainable code.</pre>
+            <pre class="hidden-code">                   web and mobile applications.</pre>
+                    I am passionate about writing
+            <pre class="hidden-code">                       clean, efficient, and maintainable code.</pre>
             </pre>
-        </div>
         </section>
         <section id="skills">
             <h3>Skills</h3>
-            <table>
+            <table id="skills-table">
                 <colgroup>
                     <col style="width: 200px" />
                     <col style="width: 100px" />
@@ -133,12 +128,12 @@
             </div>
         </section>
         <section id="education">
-            <h3>Education</h3>
-            <div class="education-div">
+            <h3 id="education-header">Education</h3>
+            <div id="ucsd-div" class="education-div">
                 <h4>University of California, San Diego (2021 - 2023)</h4>
                 <p class="education-school">B. Sc. Computer Science</p>
             </div>
-            <div class="education-div">
+            <div id="deanza-div" class="education-div">
                 <h4>De Anza College (2019 - 2021)</h4>
                 <p class="education-school">B. Sc. Computer Science - Transfer</p>
             </div>
