@@ -483,7 +483,7 @@ tbody td:not(:last-child) {
     background-position: center;
 }
 
-#drawer {
+#drawer[active="true"] {
     position: fixed;
     top: 55px;
     right: -200px;
@@ -494,8 +494,15 @@ tbody td:not(:last-child) {
     transition: transform 0.3s ease-in-out;
   }
   
-  #drawer.active {
+  #drawer[active="false"] {
+    position: fixed;
+    top: 55px;
+    right: -200px;
+    width: 200px;
+    height: 100%;
+    background-color: #f1f1f1;
     transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
   }
 
 #nav-drawer {
