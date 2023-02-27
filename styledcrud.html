@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Blog CRUD</title>
+        <title>Movie CRUD</title>
         <link
             rel="icon"
             type="image/x-icon"
@@ -9,6 +9,11 @@
         />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/source/style/crud.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
     </head>
 
     <body>
@@ -18,14 +23,14 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         ></script>
+        <header><h1>Big List of Movies</h1></header>
         <main>
             <dialog id="blog-dialog" class="dialog"></dialog>
-            <h1>Big List of Movies</h1>
             <div id="blog-list"></div>
             <button id="add-button">Add Blog</button>
         </main>
         <script type="module">
-            import { blogDialog } from "./source/scripts/blog.js";
+            import { blogDialog } from "./source/scripts/styledcrud.js";
             const addButton = document.getElementById("add-button");
             addButton.addEventListener("click", () => {
                 blogDialog.showDialog();
