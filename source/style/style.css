@@ -60,19 +60,19 @@ html {
 @media screen and (min-width: 0) {
     header {
         display: flex;
-        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         padding: 0;
         background-color: #5d00ff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         margin-bottom: 1rem;
+        position: sticky;
         top: 0;
-        z-index: 99999;
+        z-index: 100;
     }
 
     #nav-bar-list {
-        display: flex;
+        display: none;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
@@ -89,24 +89,28 @@ html {
         margin: 0.2rem 0;
     }
 
+    #nav-bar-button {
+        background-color: var(--button-color);
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition-duration: 0.2s;
+        transition-property: transform, box-shadow, background-color;
+        color: white;
+        font-weight: bold;
+        font-size: large;
+        margin: 0.5rem 0.5rem;
+    }
+
+    #nav-bar-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
 }
 
 @media screen and (min-width: 600px) {
-    header {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0;
-        background-color: #5d00ff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        position: sticky;
-        margin-bottom: 1rem;
-        top: 0;
-    }
-
     #nav-bar-list {
-        display: flex;
+        display: none;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -114,8 +118,8 @@ html {
     }
 
     #nav-bar-list>li {
+
         padding: 1rem 1rem;
-        /* height: 100%; */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -151,6 +155,10 @@ html {
         flex-direction: row;
         justify-content: center;
         align-items: center;
+    }
+
+    #nav-bar-button {
+        display: none;
     }
 }
 section {
@@ -454,31 +462,14 @@ tbody td:not(:last-child) {
     max-width: 1200px;
 }
 
-.education-div:hover:nth-child(even) {
+.education-div:hover {
     background-color: #d9d9d9;
-    transform: scale(1.05);
-    transform: rotate(0deg);
-}
-
-.education-div:hover:nth-child(odd) {
-    background-color: #d9d9d9;
-    transform: scale(1.05);
-    transform: rotate(0deg);
 }
 
 .education-school {
     font-size: 18px;
     margin-top: 0;
 }
-
-.education-div:nth-child(even) {
-    transform: rotate(3deg);
-}
-
-.education-div:nth-child(odd) {
-    transform: rotate(-3deg);
-}
-
 
 #education:has(> #ucsd-div:hover) {
     background-image: url("/source/images/ucsd.jpg");
@@ -488,4 +479,34 @@ tbody td:not(:last-child) {
 #education:has(> #deanza-div:hover) {
     background-image: url("/source/images/deanza.jpg");
     background-position: center;
+}
+
+#drawer {
+    position: fixed;
+    top: 55px;
+    right: -200px;
+    width: 200px;
+    height: 100%;
+    background-color: #f1f1f1;
+    transform: translateX(-200px);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  #drawer.active {
+    transform: translateX(0);
+  }
+
+#nav-drawer {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+#nav-drawer li {
+    margin: 10px;
 }
