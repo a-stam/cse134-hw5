@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Custom Dialogs</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="/source/images/favicon.ico"
+        />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+
+    <body>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.0/purify.min.js"
+            integrity="sha512-Ijc86Y/rPOFCr+CJLd0QQlEaCC9ztVJFvPzK0DMrHCJ8biDkyQoo6Ll/OmqMEOaDJ2nCgsV89402SzXnocKzZg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <main>
+            <dialog id="custom-dialog" class="dialog">
+                <h2 class="dialog-title"></h2>
+                <div class="dialog-message"></div>
+                <div class="dialog-buttons">
+                    <button class="dialog-button dialog-button-confirm">
+                        OK
+                    </button>
+                    <button class="dialog-button dialog-button--cancel">
+                        Cancel
+                    </button>
+                </div>
+            </dialog>
+            <button id="alert-button">Alert</button>
+            <button id="confirm-button">Confirm</button>
+            <button id="prompt-button">Prompt</button>
+            <hr />
+            <output id="output"></output>
+            <script type="module">
+                import { customDialog } from "./source/scripts/customdialog.js";
+
+                var output = document.getElementById("output");
+
+                const clearOutput = () => {
+                    output.innerHTML = "";
+                };
+
+                document.addEventListener("DOMContentLoaded", () => {
+                    document
+                        .getElementById("alert-button")
+                        .addEventListener("click", () => {
+                            clearOutput();
+                            customDialog.alert("Alert pressed!");
+                        });
+
+                    document
+                        .getElementById("confirm-button")
+                        .addEventListener("click", () => {
+                            clearOutput();
+                            customDialog
+                                .confirm("Do you confirm this?")
+                                .then((result) => {
+                                    // set output to the result
+                                    document.getElementById(
+                                        "output"
+                                    ).innerHTML = `Confirm result: ${result}`;
+                                });
+                        });
+
+                    document
+                        .getElementById("prompt-button")
+                        .addEventListener("click", () => {
+                            clearOutput();
+                            customDialog
+                                .prompt("What's your favourite language?")
+                                .then((result) => {
+                                    let sanitized = DOMPurify.sanitize(result);
+                                    // set output to the result
+                                    document.getElementById(
+                                        "output"
+                                    ).innerHTML = `Prompt result: ${sanitized}`;
+                                });
+                        });
+                });
+            </script>
+        </main>
+    </body>
+</html>

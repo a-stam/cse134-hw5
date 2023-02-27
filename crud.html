@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Movie CRUD</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="/source/images/favicon.ico"
+        />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+
+    <body>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.0/purify.min.js"
+            integrity="sha512-Ijc86Y/rPOFCr+CJLd0QQlEaCC9ztVJFvPzK0DMrHCJ8biDkyQoo6Ll/OmqMEOaDJ2nCgsV89402SzXnocKzZg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <main>
+            <dialog id="blog-dialog" class="dialog"></dialog>
+            <h1>Big List of Movies</h1>
+            <div id="blog-list"></div>
+            <button id="add-button">Add Blog</button>
+        </main>
+        <script type="module">
+            import { blogDialog } from "./source/scripts/blog.js";
+            addButton.addEventListener("click", () => {
+                blogDialog.showDialog();
+            });
+        </script>
+    </body>
+</html>

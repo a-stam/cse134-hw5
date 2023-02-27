@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Simple Dialogs</title>
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="/source/images/favicon.ico"
+        />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+
+    <body>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.0/purify.min.js"
+            integrity="sha512-Ijc86Y/rPOFCr+CJLd0QQlEaCC9ztVJFvPzK0DMrHCJ8biDkyQoo6Ll/OmqMEOaDJ2nCgsV89402SzXnocKzZg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <main>
+            <h1>Simple Dialogs?</h1>
+            <button id="alert-button">Alert</button>
+            <button id="confirm-button">Confirm</button>
+            <button id="prompt-button">Prompt</button>
+            <button id="safe-prompt">Safer Prompt</button>
+            <hr />
+            <output id="output"></output>
+            <script>
+                var output = document.getElementById("output");
+
+                const clearOutput = () => {
+                    output.innerHTML = "";
+                };
+
+                document
+                    .getElementById("alert-button")
+                    .addEventListener("click", () => {
+                        clearOutput();
+                        alert("Alert");
+                    });
+
+                document
+                    .getElementById("confirm-button")
+                    .addEventListener("click", () => {
+                        clearOutput();
+                        let result = confirm("Confirm");
+                        output.innerHTML = `The value returned by the confirm method is : ${result}`;
+                    });
+
+                document
+                    .getElementById("prompt-button")
+                    .addEventListener("click", () => {
+                        clearOutput();
+                        let answer = prompt(
+                            "What's your favourite programing language?"
+                        );
+                        console.log("answer", answer);
+                        if (answer) {
+                            output.innerHTML = answer;
+                        } else {
+                            alert("You didn't enter anything!");
+                        }
+                    });
+
+                document
+                    .getElementById("safe-prompt")
+                    .addEventListener("click", () => {
+                        clearOutput();
+                        let answer = prompt(
+                            "What's your favourite programing language?"
+                        );
+                        if (answer) {
+                            output.innerHTML = DOMPurify.sanitize(answer);
+                        } else {
+                            alert("You didn't enter anything!");
+                        }
+                    });
+            </script>
+        </main>
+    </body>
+</html>
