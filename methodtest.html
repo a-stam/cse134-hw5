@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Method Test</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/source/style/methodtest.css" />
+    </head>
+    <body>
+        <main>
+            <h1>Method Tests</h1>
+            <form id="articleForm">
+                <div class="form-group">
+                    <label for="id">ID:</label>
+                    <input type="number" id="id" name="id" />
+                </div>
+
+                <div class="form-group">
+                    <label for="article_name">Name:</label>
+                    <input type="text" id="article_name" name="article_name" />
+                </div>
+
+                <div class="form-group">
+                    <label for="article_body">Body:</label>
+                    <textarea id="article_body" name="article_body"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" disabled />
+                </div>
+
+                <div class="radio-wrapper form-group">
+                    <div class="radio-option">
+                        <input
+                            type="radio"
+                            id="xhr_option"
+                            name="api"
+                            value="xhr_option"
+                            checked
+                        />
+                        <label for="xhr_option">XMLHttpRequest</label>
+                    </div>
+                    <div class="radio-option">
+                        <input
+                            type="radio"
+                            id="fetch_option"
+                            name="api"
+                            value="fetch_option"
+                        />
+                        <label for="fetch_option">Fetch API</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" id="postBtn">POST</button>
+                    <button type="button" id="getBtn">GET</button>
+                    <button type="button" id="putBtn">PUT</button>
+                    <button type="button" id="deleteBtn">DELETE</button>
+                </div>
+            </form>
+
+            <output>
+                <h2>Output</h2>
+                <pre id="output"></pre>
+            </output>
+        </main>
+
+        <script>
+            const articleForm = document.querySelector("#articleForm");
+            const postBtn = document.querySelector("#postBtn");
+            const getBtn = document.querySelector("#getBtn");
+            const putBtn = document.querySelector("#putBtn");
+            const deleteBtn = document.querySelector("#deleteBtn");
+            const dateInput = document.querySelector("#date");
+            const apiRadioButtons =
+                document.querySelectorAll('input[name="api"]');
+            const output = document.querySelector("#output");
+
+            const currentDate = new Date().toISOString().split("T")[0];
+            dateInput.value = currentDate;
+            console.log("currentDate", currentDate);
+
+            function getSelectedAPI() {
+                return Array.from(apiRadioButtons).find(
+                    (button) => button.checked
+                ).value;
+            }
+
+            postBtn.addEventListener("click", () => {
+                const formData = new FormData(articleForm);
+                const apiUrl = "https://httpbin.org/post";
+                const selectedAPI = getSelectedAPI();
+
+                let requestOptions = {
+                    method: "POST",
+                    body: formData,
+                };
+
+                if (selectedAPI === "xhr_option") {
+                    let xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (this.readyState == XMLHttpRequest.DONE) {
+                            if (this.status == 200) {
+                                output.textContent =
+                                    "XMLHttpRequest Post Response: \n" +
+                                    xhr.responseText;
+                            } else {
+                                output.textContent =
+                                    "XMLHttpRequest Post Error: \n" +
+                                    this.statusText;
+                            }
+                        }
+                    };
+                    xhr.open("POST", apiUrl);
+                    xhr.send(formData);
+                } else {
+                    fetch(apiUrl, requestOptions)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            output.textContent =
+                                "Fetch API Post Response: \n" +
+                                JSON.stringify(data, null, 2);
+                        });
+                }
+            });
+
+            getBtn.addEventListener("click", () => {
+                const id = document.querySelector("#id").value;
+                const apiUrl = `https://httpbin.org/get?id=${id}`;
+                const selectedAPI = getSelectedAPI();
+
+                let requestOptions = {
+                    method: "GET",
+                };
+
+                if (selectedAPI === "xhr_option") {
+                    let xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (this.readyState == XMLHttpRequest.DONE) {
+                            if (this.status == 200) {
+                                output.textContent =
+                                    "XMLHttpRequest Get Response: \n" +
+                                    xhr.responseText;
+                            } else {
+                                output.textContent =
+                                    "XMLHttpRequest Get Error: \n" +
+                                    this.statusText;
+                            }
+                        }
+                    };
+                    xhr.open("GET", apiUrl);
+                    xhr.send();
+                } else {
+                    fetch(apiUrl, requestOptions)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            output.textContent =
+                                "Fetch API Get Response: \n" +
+                                JSON.stringify(data, null, 2);
+                        });
+                }
+            });
+
+            putBtn.addEventListener("click", () => {
+                const formData = new FormData(articleForm);
+                const apiUrl = `https://httpbin.org/put`;
+                const selectedAPI = getSelectedAPI();
+
+                let requestOptions = {
+                    method: "PUT",
+                    body: formData,
+                };
+
+                if (selectedAPI === "xhr_option") {
+                    let xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (this.readyState == XMLHttpRequest.DONE) {
+                            if (this.status == 200) {
+                                output.textContent =
+                                    "XMLHttpRequest Put Response: \n" +
+                                    xhr.responseText;
+                            } else {
+                                output.textContent =
+                                    "XMLHttpRequest Put Error: \n" +
+                                    this.statusText;
+                            }
+                        }
+                    };
+                    xhr.open("PUT", apiUrl);
+                    xhr.send(formData);
+                } else {
+                    fetch(apiUrl, requestOptions)
+                        .then((response) => response.json())
+                        .then(
+                            (data) =>
+                                (output.textContent =
+                                    "Fetch API Put Response: \n" +
+                                    JSON.stringify(data, null, 2))
+                        );
+                }
+            });
+
+            deleteBtn.addEventListener("click", () => {
+                const id = document.querySelector("#id").value;
+                const apiUrl = `https://httpbin.org/delete?id=${id}`;
+                const selectedAPI = getSelectedAPI();
+
+                let requestOptions = {
+                    method: "DELETE",
+                };
+
+                // Use the selected API to make the request
+                if (selectedAPI === "xhr_option") {
+                    let xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (this.readyState == XMLHttpRequest.DONE) {
+                            if (this.status == 200) {
+                                output.textContent =
+                                    "XMLHttpRequest Delete Response: \n" +
+                                    xhr.responseText;
+                            } else {
+                                output.textContent =
+                                    "XMLHttpRequest Delete Error: \n" +
+                                    this.statusText;
+                            }
+                        }
+                    };
+                    xhr.open("DELETE", apiUrl);
+                    xhr.send();
+                } else {
+                    fetch(apiUrl, requestOptions)
+                        .then((response) => response.json())
+                        .then(
+                            (data) =>
+                                (output.textContent =
+                                    "Fetch API Delete Response: \n" +
+                                    JSON.stringify(data, null, 2))
+                        );
+                }
+            });
+        </script>
+    </body>
+</html>
