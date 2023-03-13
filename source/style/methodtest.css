@@ -30,7 +30,7 @@ textarea {
     margin-bottom: 20px;
     border: none;
     border-radius: 5px;
-    box-shadow: 0 0 5px #ccc;
+    box-shadow: 0 0 5px lightgray;
     font-size: 16px;
     width: calc(100% - 20px);
     resize: vertical
@@ -55,8 +55,8 @@ button {
     margin-right: 10px;
     border: none;
     border-radius: 5px;
-    box-shadow: 0 0 5px #ccc;
-    background-color: #2196f3;
+    box-shadow: 0 0 5px;
+    background-color: #1b88e1;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
@@ -65,7 +65,7 @@ button {
 #output {
     margin-top: 20px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid lightgray;
     border-radius: 5px;
     font-size: 16px;
     white-space: pre-wrap;

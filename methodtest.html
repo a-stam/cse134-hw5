@@ -14,7 +14,7 @@
     <body>
         <main>
             <h1>Method Tests</h1>
-            <form id="articleForm">
+            <form id="requestFrom">
                 <div class="form-group">
                     <label for="id">ID:</label>
                     <input type="number" id="id" name="id" />
@@ -72,33 +72,46 @@
         </main>
 
         <script>
-            const articleForm = document.querySelector("#articleForm");
+            const requestFrom = document.querySelector("#requestFrom");
             const postBtn = document.querySelector("#postBtn");
             const getBtn = document.querySelector("#getBtn");
             const putBtn = document.querySelector("#putBtn");
             const deleteBtn = document.querySelector("#deleteBtn");
             const dateInput = document.querySelector("#date");
-            const apiRadioButtons =
-                document.querySelectorAll('input[name="api"]');
+            const apiOptions = document.querySelectorAll('input[name="api"]');
             const output = document.querySelector("#output");
-
             const currentDate = new Date().toISOString().split("T")[0];
+
             dateInput.value = currentDate;
             console.log("currentDate", currentDate);
 
-            function getSelectedAPI() {
-                return Array.from(apiRadioButtons).find(
-                    (button) => button.checked
-                ).value;
+            function getAPIFormData() {
+                const formData = new FormData();
+                formData.append("id", document.querySelector("#id").value);
+                formData.append(
+                    "article_name",
+                    document.querySelector("#article_name").value
+                );
+                formData.append(
+                    "article_body",
+                    document.querySelector("#article_body").value
+                );
+                formData.append("date", document.querySelector("#date").value);
+                return formData;
             }
 
-            postBtn.addEventListener("click", () => {
-                const formData = new FormData(articleForm);
-                const apiUrl = "https://httpbin.org/post";
-                const selectedAPI = getSelectedAPI();
+            function getAPIValue() {
+                return Array.from(apiOptions).find((button) => button.checked)
+                    .value;
+            }
+
+            function formDataAPI(type) {
+                const formData = getAPIFormData();
+                const apiUrl = "https://httpbin.org/" + type;
+                const selectedAPI = getAPIValue();
 
                 let requestOptions = {
-                    method: "POST",
+                    method: type.toUpperCase(),
                     body: formData,
                 };
 
@@ -107,36 +120,30 @@
                     xhr.onreadystatechange = function () {
                         if (this.readyState == XMLHttpRequest.DONE) {
                             if (this.status == 200) {
-                                output.textContent =
-                                    "XMLHttpRequest Post Response: \n" +
-                                    xhr.responseText;
+                                output.textContent = xhr.responseText;
                             } else {
-                                output.textContent =
-                                    "XMLHttpRequest Post Error: \n" +
-                                    this.statusText;
+                                output.textContent = this.statusText;
                             }
                         }
                     };
-                    xhr.open("POST", apiUrl);
+                    xhr.open(type.toUpperCase(), apiUrl);
                     xhr.send(formData);
                 } else {
                     fetch(apiUrl, requestOptions)
                         .then((response) => response.json())
                         .then((data) => {
-                            output.textContent =
-                                "Fetch API Post Response: \n" +
-                                JSON.stringify(data, null, 2);
+                            output.textContent = JSON.stringify(data, null, 2);
                         });
                 }
-            });
+            }
 
-            getBtn.addEventListener("click", () => {
+            function urlAPI(type) {
                 const id = document.querySelector("#id").value;
-                const apiUrl = `https://httpbin.org/get?id=${id}`;
-                const selectedAPI = getSelectedAPI();
+                const apiUrl = `https://httpbin.org/${type}?id=${id}`;
+                const selectedAPI = getAPIValue();
 
                 let requestOptions = {
-                    method: "GET",
+                    method: type.toUpperCase(),
                 };
 
                 if (selectedAPI === "xhr_option") {
@@ -144,106 +151,30 @@
                     xhr.onreadystatechange = function () {
                         if (this.readyState == XMLHttpRequest.DONE) {
                             if (this.status == 200) {
-                                output.textContent =
-                                    "XMLHttpRequest Get Response: \n" +
-                                    xhr.responseText;
+                                output.textContent = xhr.responseText;
                             } else {
-                                output.textContent =
-                                    "XMLHttpRequest Get Error: \n" +
-                                    this.statusText;
+                                output.textContent = this.statusText;
                             }
                         }
                     };
-                    xhr.open("GET", apiUrl);
+                    xhr.open(type.toUpperCase(), apiUrl);
                     xhr.send();
                 } else {
                     fetch(apiUrl, requestOptions)
                         .then((response) => response.json())
                         .then((data) => {
-                            output.textContent =
-                                "Fetch API Get Response: \n" +
-                                JSON.stringify(data, null, 2);
+                            output.textContent = JSON.stringify(data, null, 2);
                         });
                 }
-            });
+            }
 
-            putBtn.addEventListener("click", () => {
-                const formData = new FormData(articleForm);
-                const apiUrl = `https://httpbin.org/put`;
-                const selectedAPI = getSelectedAPI();
+            postBtn.addEventListener("click", () => formDataAPI("post"));
 
-                let requestOptions = {
-                    method: "PUT",
-                    body: formData,
-                };
+            getBtn.addEventListener("click", () => urlAPI("get"));
 
-                if (selectedAPI === "xhr_option") {
-                    let xhr = new XMLHttpRequest();
-                    xhr.onreadystatechange = function () {
-                        if (this.readyState == XMLHttpRequest.DONE) {
-                            if (this.status == 200) {
-                                output.textContent =
-                                    "XMLHttpRequest Put Response: \n" +
-                                    xhr.responseText;
-                            } else {
-                                output.textContent =
-                                    "XMLHttpRequest Put Error: \n" +
-                                    this.statusText;
-                            }
-                        }
-                    };
-                    xhr.open("PUT", apiUrl);
-                    xhr.send(formData);
-                } else {
-                    fetch(apiUrl, requestOptions)
-                        .then((response) => response.json())
-                        .then(
-                            (data) =>
-                                (output.textContent =
-                                    "Fetch API Put Response: \n" +
-                                    JSON.stringify(data, null, 2))
-                        );
-                }
-            });
+            putBtn.addEventListener("click", () => formDataAPI("put"));
 
-            deleteBtn.addEventListener("click", () => {
-                const id = document.querySelector("#id").value;
-                const apiUrl = `https://httpbin.org/delete?id=${id}`;
-                const selectedAPI = getSelectedAPI();
-
-                let requestOptions = {
-                    method: "DELETE",
-                };
-
-                // Use the selected API to make the request
-                if (selectedAPI === "xhr_option") {
-                    let xhr = new XMLHttpRequest();
-                    xhr.onreadystatechange = function () {
-                        if (this.readyState == XMLHttpRequest.DONE) {
-                            if (this.status == 200) {
-                                output.textContent =
-                                    "XMLHttpRequest Delete Response: \n" +
-                                    xhr.responseText;
-                            } else {
-                                output.textContent =
-                                    "XMLHttpRequest Delete Error: \n" +
-                                    this.statusText;
-                            }
-                        }
-                    };
-                    xhr.open("DELETE", apiUrl);
-                    xhr.send();
-                } else {
-                    fetch(apiUrl, requestOptions)
-                        .then((response) => response.json())
-                        .then(
-                            (data) =>
-                                (output.textContent =
-                                    "Fetch API Delete Response: \n" +
-                                    JSON.stringify(data, null, 2))
-                        );
-                }
-            });
+            deleteBtn.addEventListener("click", () => urlAPI("delete"));
         </script>
     </body>
 </html>
